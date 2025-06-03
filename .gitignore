@@ -1,0 +1,8 @@
+/.bundle
+/vendor
+*.log
+*.swp
+*.swo
+*.DS_Store
+coverage/
+/tmp
