@@ -39,5 +39,9 @@ RSpec.describe StringCalculator do
     it "multiplies the numbers when a * is found" do
       expect(StringCalculator.add("2*13, 1")).to eq(27)
     end
+
+    it "adds the cube of the number if it occurs thrice in row" do
+      expect(StringCalculator.add("2,2,2,1")).to eq(9)
+    end
   end
 end
