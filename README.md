@@ -53,4 +53,32 @@ bundle exec rspec
 | `"//;\n1;2"` | `3`    | Custom delimiter        |
 | `"1,-2"`     | Error  | Shows `-2` in error     |
 | `"1,-2,-4"`  | Error  | Shows `-2, -4` in error |
+| "`2,2,2,1"`	 | `9`    |	Cube logic: 2^3 = 8 + 1 |
+
+---
+
+## This project uses SOLID principles to ensure clean, maintainable, and testable code:
+
+### S – Single Responsibility Principle (SRP)
+Each class has one focused responsibility:
+
+InputParser: Extracts numbers and delimiters from the raw input
+
+NumberParser: Converts tokens to integers, including *-based expressions
+
+NegativeNumberValidator: Detects and handles negative numbers
+
+NumberCalculator: Computes the final sum with custom cube logic
+
+### O – Open/Closed Principle
+The design is open for extension, but closed for modification — new features (e.g., supporting division or powers) can be added by extending specific classes without changing core logic.
+
+### Benefits:
+Easy to read and understand
+
+Easy to test each part in isolation
+
+Scalable for future features or rule changes
+
+
 
