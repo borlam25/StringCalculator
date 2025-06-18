@@ -1,4 +1,6 @@
 require 'input_parser'
+require 'negative_number_validator'
+require 'number_parser'
 
 class StringCalculator
   def self.add(input)
@@ -7,18 +9,9 @@ class StringCalculator
     parser = InputParser.new(input)
     numbers = parser.parse_numbers
 
-    numbers = numbers.map do |number|
-      if number.include?("*")
-        number.split("*").map(&:to_i).reduce(1, :*)
-      else
-        number.to_i
-      end
-    end
+    numbers = NumberParser.new(numbers).parse
   
-    negatives = numbers.select { |n| n < 0 }
-    unless negatives.empty?
-      raise ArgumentError, "negative numbers are not allowed: #{negatives.join(', ')}"
-    end
+    NegativeNumberValidator.new(numbers).validate!
     
     sum = 0
     i = 0
