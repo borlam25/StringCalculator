@@ -35,5 +35,9 @@ RSpec.describe StringCalculator do
         StringCalculator.add("2,-3,-5,4")
       }.to raise_error(ArgumentError, "negative numbers are not allowed: -3, -5")
     end
+
+    it "multiplies the numbers when a * is found" do
+      expect(StringCalculator.add("2*13, 1")).to eq(27)
+    end
   end
 end

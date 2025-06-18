@@ -10,7 +10,14 @@ class StringCalculator
       input = parts[1]
     end
   
-    numbers = input.split(/#{delimiter}|[\n]/).map(&:to_i)
+    numbers = input.split(/#{delimiter}|[\n]/)
+    numbers = numbers.map do |number|
+      if number.include?("*")
+        number.split("*").map(&:to_i).reduce(1, :*)
+      else
+        number.to_i
+      end
+    end
   
     negatives = numbers.select { |n| n < 0 }
     unless negatives.empty?
