@@ -1,6 +1,7 @@
 require 'input_parser'
 require 'negative_number_validator'
 require 'number_parser'
+require 'number_calculator'
 
 class StringCalculator
   def self.add(input)
@@ -13,19 +14,6 @@ class StringCalculator
   
     NegativeNumberValidator.new(numbers).validate!
     
-    sum = 0
-    i = 0
-
-    while i < numbers.size
-      if numbers[i] == numbers[i + 1] && numbers[i] == numbers[i + 2]
-        sum += numbers[i] ** 3
-        i += 3
-      else
-        sum += numbers[i]
-        i += 1
-      end
-    end
-
-    sum
+    NumberCalculator.new(numbers).compute
   end
 end
